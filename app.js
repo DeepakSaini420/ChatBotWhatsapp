@@ -4,7 +4,7 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/replyMe',async (req,res)=>{
+app.post('/replyMe',async (req,res)=>{
 
     const data = req.body.Body;
 
