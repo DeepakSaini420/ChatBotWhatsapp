@@ -4,6 +4,12 @@ const app = express();
 
 app.use(express.json());
 
+app.get('/test',async (req,res)=>{
+    return res.status(200).json({
+        success:"Tested"
+    });
+})
+
 app.post('/replyMe',async (req,res)=>{
 
     const data = req.body.Body;
