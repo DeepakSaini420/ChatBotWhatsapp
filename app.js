@@ -19,6 +19,7 @@ app.get('/test',async (req,res)=>{
 app.post('/replyMe',async (req,res)=>{
 
     const data = req.body.Body;
+    console.log(req.body)
 
     const response = await client.messages
         .create({
