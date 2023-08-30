@@ -1,8 +1,12 @@
 const express = require('express');
 
+const xmlparser = require('express-xml-bodyparser');
+
 const app = express();
 
-app.use(express.json());
+// app.use(express.json());
+
+app.use(xmlparser());
 
 const accountSid = 'AC4535d3d17bdde5b8a76f522e45c04611';
 
@@ -17,7 +21,7 @@ app.get('/test',async (req,res)=>{
 })
 
 app.post('/replyMe',async (req,res)=>{
-
+    console.log(req.rawBody)
     const data = req.body.Body;
     console.log(req.body)
 
@@ -32,9 +36,7 @@ app.post('/replyMe',async (req,res)=>{
         console.log(error)
     }
 
-    return res.status(201).json({
-        success:"replied success!"
-    });
+    res.send(`<customer><id>1</id><fullName>Bob Smith</fullName></customer>`);
 })
 
 module.exports = app;
