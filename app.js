@@ -6,7 +6,7 @@ app.use(express.json());
 
 const accountSid = 'AC4535d3d17bdde5b8a76f522e45c04611';
 
-const authToken = '9c4f54f3ffc4c32a42deedba2470e1b3';
+const authToken = 'cc412407179c8628ef6c35d8c1f2deb6';
 
 const client = require('twilio')(accountSid, authToken);
 
@@ -21,12 +21,16 @@ app.post('/replyMe',async (req,res)=>{
     const data = req.body.Body;
     console.log(req.body)
 
-    const response = await client.messages
-        .create({
-            body: 'hello',
-            from: 'whatsapp:+14155238886',
-            to: 'whatsapp:+919306868328'
-    });
+    try {
+        const response = await client.messages
+            .create({
+                body: 'hello',
+                from: 'whatsapp:+14155238886',
+                to: 'whatsapp:+919306868328'
+        });
+    } catch (error) {
+        console.log(error)
+    }
 
     return res.status(201).json({
         success:"replied success!"
