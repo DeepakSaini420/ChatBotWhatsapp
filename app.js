@@ -4,6 +4,12 @@ const app = express();
 
 app.use(express.json());
 
+const accountSid = 'AC4535d3d17bdde5b8a76f522e45c04611';
+
+const authToken = '9c4f54f3ffc4c32a42deedba2470e1b3';
+
+const client = require('twilio')(accountSid, authToken);
+
 app.get('/test',async (req,res)=>{
     return res.status(200).json({
         success:"Tested"
